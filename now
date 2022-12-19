@@ -1,0 +1,10 @@
+GradeText[txt_, ref_] :=
+ Framed[Column[{
+      Panel@Style[Row[{"Grade: ", Style[
+           LetterGrade[Round[100 4 Length[Cases[#, {___}, {1}]]/
+               StringLength[ref]]], Bold, Red]}], 20],
+      Magnify[Row[Flatten[# /. {a_, b_} :>
+           
+           Overscript[Overlay[{Style[b, Blue], Style["/", 14, Red]}], 
+            Style[a, 12, Red]]]]]
+      }], RoundingRadius -> 7] &[SequenceAlignment[ref, txt]]
